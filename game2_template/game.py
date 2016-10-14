@@ -228,9 +228,9 @@ def execute_go(direction):
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-    pass
+    global current_room
     if is_valid_exit(current_room["exits"], direction):
-        move(current_room["exits"],direction)
+        current_room = move(current_room["exits"],direction)
     else:
         print("you can't go that way")
 
@@ -248,7 +248,7 @@ def execute_take(item_id):
             item_present = True
             current_room["items"].remove(item)
             inventory.append(item)
-    if item_present == False
+    if item_present == False:
         print("you can't take this")
 
 def execute_drop(item_id):
@@ -264,7 +264,7 @@ def execute_drop(item_id):
             item_present = True
             inventory["items"].remove(item)
             current_room.append(item)
-    if item_present == False
+    if item_present == False:
         print("you can't drop this")
 
 def execute_command(command):
